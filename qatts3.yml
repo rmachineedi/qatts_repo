@@ -1,0 +1,35 @@
+version: "3.8"
+volumes:                               # mounting
+  qatts5:
+    name: qatts_volume5
+  qatts6:
+    name: qatts_volume6
+services: 
+  tomcat_qatts5:                       # service1
+    container_name: tomcat_qatts5
+    build: ./file1
+    image: tomcat_qatts5
+    ports:
+    - "8005:8080"
+    volumes:
+    - type: volume
+      source: qatts5
+      target: /usr/local/tomcat/
+    networks:
+    - qatts_network5
+  tomcat_qatts6:                        # service2
+    container_name: tomcat_qatts6
+    build: ./file2
+    image: tomcat_qatts6
+    ports:
+    - "8006:8080"
+    volumes:
+    - type: volume
+      source: qatts6
+      target: /usr/local/tomcat/
+    networks:
+    - qatts_network5
+networks:                                # networks
+  qatts_network5:
+    driver: bridge
+    name: qatts_network5
