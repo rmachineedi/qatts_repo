@@ -7,12 +7,10 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/rmachineedi/qatts_repo.git'
             }
         }
-    }
-    stages {
-        stage('Build') {
+        stage('build') {
             steps {
-                sh 'docker-compose -f qatts3.yml up -d'
+                sh 'docker --version'
             }
         }
-    }
+    } 
 }
