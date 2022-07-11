@@ -9,7 +9,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                bat 'docker-compose -f qatts3.yml up -d'
+                bat 'docker-compose -f qatts3.yml up --force-recreate -d'
             }
         }
     } 
